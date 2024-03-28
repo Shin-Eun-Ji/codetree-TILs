@@ -23,14 +23,14 @@ public class Main {
             
             if( sum < B) {
                 sum += (P[i]+S[i]);
-                cnt = i;
+                cnt++;
             } else {
                 sum += (P[i]/2+S[i]);
-                cnt = i;
-                
-                if( sum > B) {
-                    break;
-                }
+                cnt++;
+            }
+            //System.out.println("sum="+sum+", cnt="+cnt);
+            if( sum > B) {
+                break;
             }
         }
         System.out.println(cnt);
