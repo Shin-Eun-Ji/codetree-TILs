@@ -8,31 +8,44 @@ public class Main {
 
         int N = Integer.parseInt(st.nextToken());
         int B = Integer.parseInt(st.nextToken());
-        int[] P = new int[N];
-        int[] S = new int[N];
+        Gift[] gifts = new Gift[N];
 
         for(int i = 0; i < N; i++) {
             st = new StringTokenizer(br.readLine());
-            P[i] = Integer.parseInt(st.nextToken());
-            S[i] = Integer.parseInt(st.nextToken());
+            int P = Integer.parseInt(st.nextToken());
+            int S = Integer.parseInt(st.nextToken());
+            gifts[i] = new Gift(P, S);
         }
 
+        Arrays.sort(gifts); // 가격 기준으로 선물 정렬
+
         int cnt = 0;
-        int sum = 0;
         for(int i = 0; i < N; i++) {
-            sum += (P[i]/2+S[i]);
-            //System.out.println("sum=" + sum);
-            if(sum <= B) {
+            if(gifts[i].shipping > B) 
+                break;
+            if (gifts[i].price <= B) {
+                B -= gifts[i].price; // 예산에서 선물 가격 차감
                 cnt++;
             } else {
-                //sum += (P[i]/2+S[i]);
-                //if( sum > B) {
-                    break;
-                //}
-                //cnt++;
+                break;
             }
-            //System.out.println("sum=" + sum + ", cnt="+cnt);
         }
         System.out.println(cnt);
+    }
+
+    static class Gift implements Comparable<Gift> {
+        int price;
+        int shipping;
+
+        public Gift(int price, int shipping) {
+            this.price = price;
+            this.shipping = shipping;
+        }
+
+        // 가격을 기준으로 오름차순 정렬
+        @Override
+        public int compareTo(Gift other) {
+            return Integer.compare(this.price, other.price);
+        }
     }
 }
