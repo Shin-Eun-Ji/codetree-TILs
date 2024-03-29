@@ -11,9 +11,9 @@ public class Main {
         }
 
         int sum = 0;
-        double avg = 0.0d;
         int cnt = 0;
-
+        double avg = 0.0d;
+        
         for(int i = 1; i <= num.length; i++) {
             if(i %2 ==0) {
                 sum += num[i-1];
@@ -26,7 +26,7 @@ public class Main {
 
         avg = (double) avg / cnt;
 
-        System.out.println(sum + " " + (double) Math.round(avg));
+        System.out.println(sum + " " + String.format("%.1f", avg));
         sc.close();
     }
 }
