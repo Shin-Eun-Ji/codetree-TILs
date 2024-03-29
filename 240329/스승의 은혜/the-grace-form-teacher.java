@@ -20,18 +20,18 @@ public class Main {
         int cnt = 0;
         int sum = 0;
         for(int i = 0; i < N; i++) {
-            
-            if( sum < B) {
-                sum += (P[i]+S[i]);
+            sum += (P[i]/2+S[i]);
+            //System.out.println("sum=" + sum);
+            if(sum <= B) {
                 cnt++;
             } else {
-                sum += (P[i]/2+S[i]);
-                cnt++;
+                //sum += (P[i]/2+S[i]);
+                //if( sum > B) {
+                    break;
+                //}
+                //cnt++;
             }
-            //System.out.println("sum="+sum+", cnt="+cnt);
-            if( sum > B) {
-                break;
-            }
+            //System.out.println("sum=" + sum + ", cnt="+cnt);
         }
         System.out.println(cnt);
     }
